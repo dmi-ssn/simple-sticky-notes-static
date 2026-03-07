@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Sticky Notes Uninstall Survey</title>
-    <script src="https://cdn.eu.amplitude.com/script/3bf1b30684f098ecefe909c00059366f.js"></script>
+    <script src="https://cdn.eu.amplitude.com/script/1bba9c637d41774fbfb579acf5caada0.js"></script>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('userId') ?? localStorage.getItem('userId');
@@ -24,7 +24,7 @@
         const newUrl = window.location.pathname + newQuery;
         window.history.replaceState({}, '', newUrl);
 
-        let p = window.amplitude.init('3bf1b30684f098ecefe909c00059366f', {
+        let p = window.amplitude.init('1bba9c637d41774fbfb579acf5caada0', {
             serverZone: 'EU',
             autocapture: false,
             identityStorage: "none",
