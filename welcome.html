@@ -6,6 +6,14 @@
     <link rel="icon" type="image/svg" sizes="any" href="assets/icon.svg">
     <meta name="color-scheme" content="light dark" />
     <title>Welcome</title>
+    <script src="https://cdn.eu.amplitude.com/script/1bba9c637d41774fbfb579acf5caada0.js"></script>
+    <script>
+        let p = window.amplitude.init('1bba9c637d41774fbfb579acf5caada0', {
+            serverZone: 'EU',
+            autocapture: false,
+            identityStorage: "none",
+        });
+    </script>
     <style>
         body {
             font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
@@ -115,7 +123,8 @@
             </span>
             <span class="code_with_icon">
                 <img src="assets/icon.svg" alt="Manager icon" style="transform: scale(1.5)">
-                <span data-i18n="context_menu_btn"></span>
+                <span onclick="window.amplitude.track('Create Note Attempt', { source: 'content_menu_btn' })"
+                    data-i18n="context_menu_btn"></span>
             </span>
             <span>:</span>
         </div>
@@ -123,13 +132,14 @@
     </div>
 
     <div class="img-container">
-        <img id="welcome-image" src="assets/welcome-1.png" alt="Chrome extension quickstart guide"
-            class="welcome-image">
-    </div> 
+        <img onclick="window.amplitude.track('Create Note Attempt', { source: 'image' })" id="welcome-image"
+            src="assets/welcome-1.png" alt="Chrome extension quickstart guide" class="welcome-image">
+    </div>
     <div class="instruction_container">
         <span class="text-subtitle">
             <span data-i18n="or_press"></span>
-            <span id="main_shortcut" class="main_shortcut">
+            <span id="main_shortcut" class="main_shortcut"
+                onclick="window.amplitude.track('Create Note Attempt', { source: 'shortcut' })">
                 <span class="code_with_icon">Alt+Shift+N</span>
                 <span>(</span>
                 <span class="code_with_icon">⌥⇧N</span>
@@ -138,7 +148,8 @@
             </span>
             <span data-i18n="to_create"></span>
             <span data-i18n="hotkey_customize" class="hidden"></span>
-            <button class="hotkey_link hidden" data-i18n="hotkey_link"></button>
+            <button class="hotkey_link hidden" data-i18n="hotkey_link"
+                onclick="window.amplitude.track('Link Click')"></button>
         </span>
     </div>
     <script>
