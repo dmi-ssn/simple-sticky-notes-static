@@ -26,12 +26,23 @@
         }
 
         .text-title {
-            font-size: 48px;
+            font-size: 36px;
             font-weight: bold;
         }
 
         .text-subtitle {
             font-size: 22px;
+        }
+
+        .steps-list {
+            font-size: 22px;
+            padding-left: 1.5em;
+            margin: 0;
+            text-align: left;
+        }
+
+        .steps-list li {
+            margin-bottom: 8px;
         }
 
         .screenshot {
@@ -118,17 +129,19 @@
     <h1 class="text-title" data-i18n="installed"></h1>
 
     <div class="instruction_container">
-        <div class="text-subtitle">
-            <span class="" data-i18n="context_menu">
-            </span>
-            <span class="code_with_icon">
-                <img src="assets/icon.svg" alt="Manager icon" style="transform: scale(1.5)">
-                <span onclick="window.amplitude.track('Create Note Attempt', { source: 'content_menu_btn' })"
-                    data-i18n="context_menu_btn"></span>
-            </span>
-            <span>:</span>
-        </div>
-
+        <ol class="steps-list">
+            <li>
+                <span data-i18n="context_menu"></span>
+            </li>
+            <li>
+                <span data-i18n="context_menu_2"></span>
+                <span class="code_with_icon">
+                    <img src="assets/icon.svg" alt="Manager icon" style="transform: scale(1.5)">
+                    <span onclick="window.amplitude.track('Create Note Attempt', { source: 'content_menu_btn' })"
+                        data-i18n="context_menu_btn"></span>
+                </span>
+            </li>
+        </ol>
     </div>
 
     <div class="img-container">
@@ -171,6 +184,10 @@
         }
 
         document.addEventListener('DOMContentLoaded', loadTranslations);
+
+        document.addEventListener('contextmenu', () => {
+            window.amplitude.track('Context Menu Opened');
+        });
     </script>
 </body>
 
