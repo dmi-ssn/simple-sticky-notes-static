@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/svg" sizes="any" href="assets/icon.svg">
@@ -138,7 +137,7 @@
                 <span class="code_with_icon">
                     <img src="assets/icon.svg" alt="Manager icon" style="transform: scale(1.5)">
                     <span onclick="window.amplitude.track('Create Note Attempt', { source: 'content_menu_btn' })"
-                        data-i18n="context_menu_btn"></span>
+                        data-i18n="context_menu_btn" data-create-note="da3912475"></span>
                 </span>
             </li>
         </ol>
@@ -146,13 +145,13 @@
 
     <div class="img-container">
         <img onclick="window.amplitude.track('Create Note Attempt', { source: 'image' })" id="welcome-image"
-            src="assets/welcome-1.png" alt="Chrome extension quickstart guide" class="welcome-image">
+            src="assets/welcome-1.png" alt="Chrome extension quickstart guide" class="welcome-image" data-create-note="da3912475">
     </div>
     <div class="instruction_container">
         <span class="text-subtitle">
             <span data-i18n="or_press"></span>
             <span id="main_shortcut" class="main_shortcut"
-                onclick="window.amplitude.track('Create Note Attempt', { source: 'shortcut' })">
+                onclick="window.amplitude.track('Create Note Attempt', { source: 'shortcut' })" data-create-note="da3912475">
                 <span class="code_with_icon">Alt+Shift+N</span>
                 <span>(</span>
                 <span class="code_with_icon">⌥⇧N</span>
