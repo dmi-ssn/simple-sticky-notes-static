@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg" sizes="any" href="assets/icon.svg">
+    <meta name="color-scheme" content="light dark" />
+    <title>Welcome</title>
+    <script src="https://cdn.eu.amplitude.com/script/1bba9c637d41774fbfb579acf5caada0.js"></script>
+    <script>
+        let p = window.amplitude.init('1bba9c637d41774fbfb579acf5caada0', {
+            serverZone: 'EU',
+            autocapture: false,
+            identityStorage: "none",
+        });
+    </script>
+    <style>
+        body {
+            font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            text-align: center;
+            color: black;
+        }
+
+        .text-title {
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        .text-subtitle {
+            font-size: 22px;
+        }
+
+        .steps-list {
+            font-size: 22px;
+            padding-left: 1.5em;
+            margin: 0;
+            text-align: left;
+        }
+
+        .steps-list li {
+            margin-bottom: 8px;
+        }
+
+        .screenshot {
+            width: 100%;
+            max-width: 700px;
+            height: 300px;
+            background-color: #f0f0f0;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .screenshot::after {
+            content: "Screenshot placeholder";
+            color: #666;
+        }
+
+        .welcome-image {
+            max-width: 700px;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .img-container {
+            width: max-content;
+            margin: 20px auto;
+        }
+
+        .instruction_container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .code_with_icon {
+            display: inline-flex;
+            align-items: center;
+            flex-direction: row;
+            border-radius: 6px;
+            border: 1px solid #e5e7eb;
+            padding: 2px 6px;
+            gap: 6px;
+        }
+
+        .code_with_icon svg,
+        .code_with_icon img {
+            width: 15px;
+            height: 15px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        .hotkey_link {
+            padding: 6px 10px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .hotkey_link:hover {
+            background-color: #357abd;
+        }
+
+        .hotkey_link:active {
+            background-color: #2b62a1;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="text-title" data-i18n="installed"></h1>
+
+    <div class="instruction_container">
+        <ol class="steps-list">
+            <li>
+                <span data-i18n="context_menu"></span>
+            </li>
+            <li>
+                <span data-i18n="context_menu_2"></span>
+                <span class="code_with_icon">
+                    <img src="assets/icon.svg" alt="Manager icon" style="transform: scale(1.5)">
+                    <span onclick="window.amplitude.track('Create Note Attempt', { source: 'content_menu_btn' })"
+                        data-i18n="context_menu_btn" data-create-note="da3912475"></span>
+                </span>
+            </li>
+        </ol>
+    </div>
+
+    <div class="img-container">
+        <img onclick="window.amplitude.track('Create Note Attempt', { source: 'image' })" id="welcome-image"
+            src="assets/welcome-1.png" alt="Chrome extension quickstart guide" class="welcome-image" data-create-note="da3912475">
+    </div>
+    <div class="instruction_container">
+        <span class="text-subtitle">
+            <span data-i18n="or_press"></span>
+            <span id="main_shortcut" class="main_shortcut"
+                onclick="window.amplitude.track('Create Note Attempt', { source: 'shortcut' })" data-create-note="da3912475">
+                <span class="code_with_icon">Alt+Shift+N</span>
+                <span>(</span>
+                <span class="code_with_icon">⌥⇧N</span>
+                <span data-i18n="mac_shortcut"></span>
+                <span>)</span>
+            </span>
+            <span data-i18n="to_create"></span>
+            <span data-i18n="hotkey_customize" class="hidden"></span>
+            <button class="hotkey_link hidden" data-i18n="hotkey_link"
+                onclick="window.amplitude.track('Link Click')"></button>
+        </span>
+    </div>
+    <script>
+        async function loadTranslations() {
+            const translations = await fetch('locales/translations.json').then(r => r.json());
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang') || 'en';
+            const texts = translations[lang] || translations['en'];
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                element.innerHTML = texts[key];
+            });
+
+            if (lang === 'ru') {
+                const welcomeImage = document.getElementById('welcome-image');
+                welcomeImage.src = `assets/welcome-1-ru.png`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadTranslations);
+
+        document.addEventListener('contextmenu', () => {
+            window.amplitude.track('Context Menu Opened');
+        });
+    </script>
+</body>
+
+</html>
