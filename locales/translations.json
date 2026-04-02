@@ -1,12 +1,14 @@
 {
   "en": {
-    "installed": "🎉 Let's create your first note!",
+    "installed": "🎉 Congratulations on installing Simple Sticky Notes!",
+    "installed_desc": "To immediately feel the improvement in productivity, please follow this simple 3-step guide:",
     "step_1": "1. Click the puzzle piece in the top right of your browser.",
     "step_2": "2. Click the little pin next to the extension:",
     "step_3": "3. Open the extension on any site to create notes"
   },
   "ru": {
-    "installed": "🎉 Давайте создадим вашу первую заметку!",
+    "installed": "🎉 Поздравляем с установкой Липкие Заметки!",
+    "installed_desc": "Чтобы сразу почувствовать, как вырастет ваша продуктивность, выполните эти 3 простых шага:",
     "step_1": "1. Нажмите на значок пазла в правом верхнем углу браузера.",
     "step_2": "2. Нажмите на значок булавки рядом с расширением:",
     "step_3": "3. Откройте расширение на любом сайте, чтобы создавать заметки"
